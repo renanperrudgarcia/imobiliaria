@@ -1,0 +1,22 @@
+<?php
+use Laminas\View\View;
+
+/**
+ * @var $this View
+ */
+?>
+<h1>Incluir imóveis</h1>
+<form method="post" action="<?=$this->url('cadastros',[
+'controller' => 'imovel',
+'action' => 'gravar'    
+])?>">
+Descrição: <input type="text" name="descricao" autofocus="autofocus" value="<?=$this->imovel->descricao?>">
+Valor: <input type="number" name="valor" autofocus="autofocus" value="<?=$this->imovel->valor?>">
+<input type="hidden" name="matricula" value="<?=$this->imovel->matricula?>">
+<input type="submit" value="gravar">
+</form>
+<span><?=$this->messages?></span>
+
+<a href="<?=$this->url('cadastros',[
+'controller' => 'imovel'    
+])?>">Voltar</a>

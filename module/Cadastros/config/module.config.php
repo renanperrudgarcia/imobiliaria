@@ -7,7 +7,8 @@ namespace Cadastros;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
-use Cadastros\Controller\CorretorControllerFactory;
+use Cadastros\Controller\CorretorControllerFactory; 
+use Cadastros\Controller\ImovelControllerFactory;
 
 return [
     'router' => [
@@ -26,11 +27,13 @@ return [
     ],
     'controllers' => [
         'aliases' => [
-            'corretor' => Controller\CorretorController::class
+            'corretor' => Controller\CorretorController::class,
+            'imovel' => Controller\ImovelController::class
         ],
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
             Controller\CorretorController::class => CorretorControllerFactory::class,
+            Controller\ImovelController::class => ImovelControllerFactory::class,
         ],
     ],
     'view_manager' => [
@@ -41,6 +44,7 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'cadastros/corretor/index'      => __DIR__ . '/../view/cadastros/corretor/index.phtml',
+            'cadastros/imovel/index'      => __DIR__ . '/../view/cadastros/imovel/index.phtml',
             'error/404'                     => __DIR__ . '/../view/error/404.phtml',
             'error/index'                   => __DIR__ . '/../view/error/index.phtml',
         ],
@@ -50,7 +54,9 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'CorretorTable' => Model\CorretorTableFactory::class
+            'CorretorTable' => Model\CorretorTableFactory::class,
+            'ImovelTable' => Model\ImovelTableFactory::class
+            
         ]
     ]
 ];
